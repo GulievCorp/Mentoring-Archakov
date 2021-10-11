@@ -14,9 +14,6 @@ export default function Form() {
   };
 
   const handleSubmit = () => {
-    email || password
-      ? console.log('Email ' + email + ' Password' + password)
-      : alert('Вы не заполнили формы');
     if (email) {
       console.log('Email ' + email);
     } else if (password) {
