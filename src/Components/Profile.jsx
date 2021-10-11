@@ -18,11 +18,11 @@ export default function Profile(props) {
     props.registredAt.getFullYear();
 
   return (
-    <div className = {styles.profile}>
-      <p>Привет, <b>{props.name}</b></p>
+    <div className={styles.profile}>
       <p>
-        Дата регистрации: {thisDate}
+        Привет, <b>{props.name}</b>
       </p>
+      <p>Дата регистрации: {thisDate}</p>
     </div>
   );
 }
