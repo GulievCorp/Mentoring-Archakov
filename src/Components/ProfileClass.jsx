@@ -2,18 +2,25 @@ import React from 'react';
 import styles from '../Styles/profile.module.css';
 
 class ProfileClass extends React.Component {
-  montoToStr(num) {
-    return num > 12 || num < 1
-      ? null
-      : 'январь,февраль,март,апрель,май,июнь,июль,август,сентябрь,октябрь,ноябрь,декабрь'.split(
-          ',',
-        )[num - 1];
-  }
+  objMotth = {
+    1: 'Январь',
+    2: 'Февраль',
+    3: 'Март',
+    4: 'Апрель',
+    5: 'Май',
+    6: 'Июнь',
+    7: 'Июль',
+    8: 'Август',
+    9: 'Сентябрь',
+    10: 'Октябрь',
+    11: 'Ноябрь',
+    12: 'Дека',
+  };
 
   Date =
     this.props.registredAt.getDate() +
     ' ' +
-    this.montoToStr(this.props.registredAt.getMonth()) +
+    this.objMotth[this.props.registredAt.getMonth()] +
     ' ' +
     this.props.registredAt.getFullYear();
 
