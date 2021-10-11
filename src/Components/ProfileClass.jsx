@@ -2,25 +2,25 @@ import React from 'react';
 import styles from '../Styles/profile.module.css';
 
 class ProfileClass extends React.Component {
-  objMotth = {
-    1: 'Январь',
-    2: 'Февраль',
-    3: 'Март',
-    4: 'Апрель',
-    5: 'Май',
-    6: 'Июнь',
-    7: 'Июль',
-    8: 'Август',
-    9: 'Сентябрь',
-    10: 'Октябрь',
-    11: 'Ноябрь',
-    12: 'Дека',
+  objMonth = {
+    0: 'Январь',
+    1: 'Февраль',
+    2: 'Март',
+    3: 'Апрель',
+    4: 'Май',
+    5: 'Июнь',
+    6: 'Июль',
+    7: 'Август',
+    8: 'Сентябрь',
+    9: 'Октябрь',
+    10: 'Ноябрь',
+    11: 'Дека',
   };
 
   Date =
     this.props.registredAt.getDate() +
     ' ' +
-    this.objMotth[this.props.registredAt.getMonth()] +
+    this.objMonth[this.props.registredAt.getMonth()] +
     ' ' +
     this.props.registredAt.getFullYear();
 

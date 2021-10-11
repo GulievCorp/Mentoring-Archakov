@@ -2,25 +2,25 @@ import React from 'react';
 import styles from '../Styles/profile.module.css';
 
 export default function Profile({ registredAt, name }) {
-  const objMotth = {
-    1: 'Январь',
-    2: 'Февраль',
-    3: 'Март',
-    4: 'Апрель',
-    5: 'Май',
-    6: 'Июнь',
-    7: 'Июль',
-    8: 'Август',
-    9: 'Сентябрь',
-    10: 'Октябрь',
-    11: 'Ноябрь',
-    12: 'Дека',
+  const objMonth = {
+    0: 'Январь',
+    1: 'Февраль',
+    2: 'Март',
+    3: 'Апрель',
+    4: 'Май',
+    5: 'Июнь',
+    6: 'Июль',
+    7: 'Август',
+    8: 'Сентябрь',
+    9: 'Октябрь',
+    10: 'Ноябрь',
+    11: 'Декабрь',
   };
 
   let thisDate =
     registredAt.getDate() +
     ' ' +
-    objMotth[registredAt.getMonth()] +
+    objMonth[registredAt.getMonth()] +
     ' ' +
     registredAt.getFullYear();
 

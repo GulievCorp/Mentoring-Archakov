@@ -7,9 +7,9 @@ function App() {
 
   return (
     <div className="App">
-      <Profile name={'Анар'} registredAt={date} />
+      <Profile name='Анар' registredAt={date} />
       <hr />
-      <ProfileClass name={'Анар'} registredAt={date} />
+      <ProfileClass name='Анар' registredAt={date} />
     </div>
   );
 }
