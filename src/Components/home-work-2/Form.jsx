@@ -25,11 +25,11 @@ export default function Form() {
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input name="Email" type="text" placeholder="E-Mail" onChange={(e) => changeValue(e)} />
         <input
           name="Password"
-          type="password"
+          type="Password"
           placeholder="Пароль"
           onChange={(e) => changeValue(e)}
         />
