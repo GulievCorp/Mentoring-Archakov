@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Components/home-work-2/Form';
+import Todo from './Components/home-work-3/Todo';
 import Profile from './Components/Profile';
 import ProfileClass from './Components/ProfileClass';
 
@@ -8,11 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Profile name="Анар" registredAt={date} />
-      <hr />
-      <ProfileClass name="Анар" registredAt={date} />
-      <hr />
-      <Form />
+      <Todo />
     </div>
   );
 }

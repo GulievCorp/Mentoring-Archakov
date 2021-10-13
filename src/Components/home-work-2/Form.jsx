@@ -13,7 +13,11 @@ export default function Form() {
     }
   };
 
-  const handleSubmit = () => {
+  React.useEffect(() => {
+    console.log('пук');
+  }, []);
+
+  const handleSubmit = (e) => {
     if (email) {
       console.log('Email ' + email);
     } else if (password) {
