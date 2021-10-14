@@ -17,7 +17,7 @@ btnAdd.addEventListener('click', () => {
 });
 
 render = () => {
-  console.log('Произошел ререндер, я ничего не смог придумать');
+  console.log('Произошел ререндер');
 };
 
 handleClickAdd = () => {
