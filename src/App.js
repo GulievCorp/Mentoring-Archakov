@@ -56,11 +56,11 @@ function App() {
   };
 
   const getNoun = () => {
-    return nounsArr[getRandomNumber(1, 9)];
+    return nounsArr[getRandomNumber(0, 8)];
   };
 
   const getAdjective = () => {
-    return adjectivesArr[getRandomNumber(1, 28)];
+    return adjectivesArr[getRandomNumber(0, 28)];
   };
 
   const generateWords = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const List = ({ words }) => {
+const List = ({ words = [] }) => {
   const elements = words.map((word, index) => {
     return (
       <div key={index} className="block">
@@ -9,11 +9,7 @@ const List = ({ words }) => {
     );
   });
 
-  return (
-    <div className="list">
-        {elements}
-    </div>
-  );
+  return <div className="list">{elements}</div>;
 };
 
 export default List;
