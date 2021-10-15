@@ -52,15 +52,15 @@ function App() {
   const [words, setWords] = React.useState([]);
 
   const getRandomNumber = (from, before) => {
-    return Math.round(Math.random(from, before) * 10);
+    return Math.floor(Math.random() * (before - from) + from);
   };
 
   const getNoun = () => {
-    return nounsArr[getRandomNumber(0, 8)];
+    return nounsArr[getRandomNumber(0, nounsArr.length)];
   };
 
   const getAdjective = () => {
-    return adjectivesArr[getRandomNumber(0, 28)];
+    return adjectivesArr[getRandomNumber(0, adjectivesArr.length)];
   };
 
   const generateWords = () => {
@@ -79,7 +79,7 @@ function App() {
   return (
     <div className="App">
       <div className="wrapper">
-        {words.length === 0 ? <EmptyBlock /> : <List words={words} />}
+        {!words.length ? <EmptyBlock /> : <List words={words} />}
         <button onClick={getWords} className="btn btn_generate">
           Сгенерировать
         </button>
