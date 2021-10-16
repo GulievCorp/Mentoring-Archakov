@@ -9,7 +9,6 @@ function App() {
   const [text, setText] = React.useState();
 
   const [data, setData] = React.useState([]);
-  const [comments, setComments] = React.useState([]);
 
   const changeName = (e) => {
     setName(e.target.value);
@@ -26,24 +25,23 @@ function App() {
   const changeData = () => {
     if (name && email && text) {
       setData([...data, { fullName: name, email: email, text: text }]);
-      setComments([...comments, { fullName: name, text: text, email: email }]);
-      console.log(comments);
     } else {
       alert('Заполните форму!');
     }
   };
 
   React.useEffect(() => {
-    if (localStorage.comments) {
-      console.log(localStorage.comments);
-      // Тут не понял как мне в дату запихать данные из локала, потому что это строка. Обьясни пожалуйста никогда не работал с этим.
-      // setData([...data, { fullName: localStorage.comments.name, email: localStorage.comments.email, text: localStorage.comments.text }]);
+    console.log(data);
+    if (localStorage.data) {
+      setData([...JSON.parse(localStorage.data)]);
+    } else {
+      console.log('Обновлений не было');
     }
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem('comments', JSON.stringify(comments));
-  }, [comments]);
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data]);
 
   return (
     <div className="App">
@@ -51,7 +49,6 @@ function App() {
         <h1>Отзывы</h1>
         {/* Не пойму как написать тут условие, что бы передавать данные либо из даты, либо из localStorage */}
         {data &&
-          comments &&
           data.map((item, index) => {
             return (
               <List key={index} fullName={item.fullName} email={item.email} text={item.text} />
