@@ -47,7 +47,6 @@ function App() {
     <div className="App">
       <div className="textBlock">
         <h1>Отзывы</h1>
-        {/* Не пойму как написать тут условие, что бы передавать данные либо из даты, либо из localStorage */}
         {data &&
           data.map((item, index) => {
             return (
