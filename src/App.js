@@ -1,77 +1,84 @@
+import { Nav, Navbar, Row, Col, Card } from 'react-bootstrap';
 import React from 'react';
-import './App.css';
-import List from './Components/home-work-5/List';
-import { Button, InputLabel } from '@material-ui/core';
+const obj = [
+  {
+    id: 1,
+    text: 'На пионерской из за 5G теперь одни зомби',
+    img: 'https://i.ytimg.com/vi/Ov6SwIZMqDs/maxresdefault.jpg',
+  },
+  {
+    id: 2,
+    text: 'В спортзалы теперь не пускают толстяков',
+    img: 'https://i.ytimg.com/vi/KA4IWWbukpw/maxresdefault.jpg',
+  },
+  {
+    id: 3,
+    text: 'Новый альбом пошлой молли, фигня(',
+    img: 'https://aif-s3.aif.ru/images/017/295/784dee66e30637cda288604d8e73ceb3.jpg',
+  },
+];
 
-function App() {
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [text, setText] = React.useState();
-
-  const [data, setData] = React.useState([]);
-
-  const changeName = (e) => {
-    setName(e.target.value);
-  };
-
-  const changeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const changeText = (e) => {
-    setText(e.target.value);
-  };
-
-  const changeData = () => {
-    if (name && email && text) {
-      setData([...data, { fullName: name, email: email, text: text }]);
-    } else {
-      alert('Заполните форму!');
-    }
-  };
-
-  React.useEffect(() => {
-    console.log(data);
-    if (localStorage.data) {
-      setData([...JSON.parse(localStorage.data)]);
-    } else {
-      console.log('Обновлений не было');
-    }
-  }, []);
-
-  React.useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(data));
-  }, [data]);
+export default function App() {
+  const { pathname } = window.location;
 
   return (
     <div className="App">
-      <div className="textBlock">
-        <h1>Отзывы</h1>
-        {data &&
-          data.map((item, index) => {
-            return (
-              <List key={index} fullName={item.fullName} email={item.email} text={item.text} />
-            );
-          })}
-      </div>
-
-      <div className="connection">
-        <h2>Обратная связь</h2>
-        <InputLabel shrink htmlFor="bootstrap-input">
-          <input onChange={changeName} type="text" />
-        </InputLabel>
-        <InputLabel shrink htmlFor="bootstrap-input">
-          <input onChange={changeEmail} type="text" />
-        </InputLabel>
-        <InputLabel shrink htmlFor="bootstrap-input">
-          <input id="text" onChange={changeText} type="text" />
-        </InputLabel>
-        <Button onClick={changeData} variant="contained" color="primary">
-          Отправить
-        </Button>
-      </div>
+      <header>
+        <h2>
+          <a href="/">React Blog</a>
+        </h2>
+        <Nav variant="pills" defaultActiveKey="/">
+          <Nav.Item>
+            <Nav.Link eventKey="/home" to="/">
+              Главная
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="/home" to="/about">
+              Обо мне
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="/home" to="/profile">
+              Профиль
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </header>
+      {pathname === '/' && (
+        <Row xs={1} md={3} className="g-4">
+          <Col>
+            {obj.map((item) => {
+              return (
+                <Card key={item.id}>
+                  <Card.Img variant="top" src={item.img} />
+                  <Card.Body>
+                    <Card.Title>
+                      <a href={'/post/' + item.id}>Card title</a>
+                    </Card.Title>
+                    <Card.Text>{item.text}</Card.Text>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Col>
+        </Row>
+      )}
+      {pathname === '/post/' + pathname.replace(/\D+/g, '') && (
+        <Card>
+          <Card.Img variant="top" src={obj[pathname.replace(/\D+/g, '') - 1].img} />
+          <Card.Body>{obj[pathname.replace(/\D+/g, '') - 1].text}</Card.Body>
+        </Card>
+      )}
+      {pathname === '/about' && (
+        <Card>
+          <Card.Body>Это мой личный сайт!</Card.Body>
+        </Card>
+      )}
+      <br />
+      <Navbar bg="light" style={{ paddingLeft: 20 }}>
+        <Navbar.Brand href="#home">My site (c) 2021</Navbar.Brand>
+      </Navbar>
     </div>
   );
 }
-
-export default App;
