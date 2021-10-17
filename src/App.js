@@ -65,11 +65,23 @@ export default function App() {
         </Row>
       )}
       {pathname === '/post/' + pathname.replace(/\D+/g, '') && (
-        <Card>
-          <Card.Img variant="top" src={obj[pathname.replace(/\D+/g, '') - 1].img} />
-          <Card.Body>{obj[pathname.replace(/\D+/g, '') - 1].text}</Card.Body>
-        </Card>
-      )}
+          <Card>
+            <Card.Img variant="top" src={obj[pathname.replace(/\D+/g, '') - 1].img} />
+            <Card.Body>{obj[pathname.replace(/\D+/g, '') - 1].text}</Card.Body>
+          </Card>
+        ) || (
+          <div>
+            <h1>Статья №{pathname.replace(/\D+/g, '') - 1}</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae distinctio fuga
+              animi aliquam sit id veritatis, doloribus ducimus quas, dignissimos non minima quia
+              amet possimus? Impedit nemo ducimus fuga rem!
+            </p>
+            <a href="/">
+              <button>Назад</button>
+            </a>
+          </div>
+        )}
       {pathname === '/about' && (
         <Card>
           <Card.Body>Это мой личный сайт!</Card.Body>
