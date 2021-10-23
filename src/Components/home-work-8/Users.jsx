@@ -5,9 +5,13 @@ export const Users = () => {
 
   const getUsers = async () => {
     await fetch('https://61740e51110a740017223247.mockapi.io/posts').then((res) => {
-      res.json().then((result) => {
-        setUsers(result);
-      });
+      try {
+        res.json().then((result) => {
+          setUsers(result);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     });
   };
 
