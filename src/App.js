@@ -1,6 +1,14 @@
 import React from 'react';
-import { Users } from './Components/home-work-8/Users';
+import MainDrawwer from './Components/Blog-Redux/Main';
+import { Provider } from 'react-redux';
+import store from './Components/Blog-Redux/store';
 
 export default function App() {
-  return <Users />;
+  return (
+    <>
+      <Provider store={store}>
+        <MainDrawwer />
+      </Provider>
+    </>
+  );
 }
